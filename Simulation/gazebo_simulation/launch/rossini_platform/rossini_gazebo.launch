@@ -1,0 +1,36 @@
+<launch>
+
+  <!--  select gazebo simulation world  -->
+  <arg name="empty_world" default="true"/>
+  <arg name="aruco_world" default="false"/>
+  <arg name="IMA_world" default="false"/>
+  
+	<!--To spawn camera on manipulator-->
+  <arg name="spawn_camera" default="false"/>
+  <arg name="real_camera" default="false"/>
+    
+  	<!--  ArUco World  -->
+  <group if="$(arg aruco_world)">
+  	<include file="$(find gazebo_simulation)/launch/rossini_platform/ArUco_World/ArUco_World_Simulation.launch">
+  		<arg name="spawn_camera" value="$(arg spawn_camera)"/>
+  		<arg name="real_camera" value="$(arg real_camera)"/>
+  	</include>
+	</group>
+	
+  	<!--  IMA World  -->
+  <group if="$(arg IMA_world)">
+  	<include file="$(find gazebo_simulation)/launch/rossini_platform/IMA_World/IMA_World_Simulation.launch">
+  		<arg name="spawn_camera" value="$(arg spawn_camera)"/>
+  		<arg name="real_camera" value="$(arg real_camera)"/>
+		</include>
+	</group>
+	
+  	<!--  Empty World  -->
+	<group if="$(arg empty_world)">
+    <include file="$(find gazebo_simulation)/launch/rossini_platform/Empty_World/Empty_World_Simulation.launch">
+    	<arg name="spawn_camera" value="$(arg spawn_camera)"/>
+  		<arg name="real_camera" value="$(arg real_camera)"/>
+  	</include>
+  </group>
+	
+</launch>

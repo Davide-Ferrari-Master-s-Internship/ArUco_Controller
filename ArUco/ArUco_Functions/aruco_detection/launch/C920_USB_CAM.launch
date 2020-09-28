@@ -1,0 +1,60 @@
+<launch>
+
+  <arg name="v_device" default="/dev/video4" />
+  <arg name="im_width" default="1920" />
+  <arg name="im_height" default="1080" />
+  <arg name="im_proc" default="false" />
+  <arg name="im_view" default="true" />
+
+  <node name="C920" pkg="usb_cam" type="usb_cam_node" output="screen">
+    <param name="video_device" value="$(arg v_device)" />
+    <param name="image_width" value="$(arg im_width)" />
+    <param name="image_height" value="$(arg im_height)" />
+    <param name="pixel_format" value="yuyv"/>
+    <param name="io_method" value="mmap"/>
+    <param name="camera_frame_id" value="C920"/>
+    <param name="framerate" value="30"/>
+
+    <!--<param name="contrast" value="100"/>
+    <param name="brightness" value="200"/>
+    <param name="saturation" value="125"/>
+    <param name="sharpness" value="200"/>
+    <param name="autofocus" value="false"/>
+    <param name="focus" value="0"/>-->
+
+    <param name="camera_info_url" value="file://$(find aruco_detection)/config/C920_calibration.yaml"/>
+    <param name="camera_name" value="C920"/>
+
+  </node>
+
+
+  <group if="$(arg im_proc)">
+    <group ns="C920">
+      <node type="image_proc" name="image_proc" pkg="image_proc"/>
+				<param name="autosize" value="true"/>
+	      <remap from="/C920/image_raw" to="C920/image_rect"/>
+    </group>
+  </group>
+
+
+
+  <group if="$(arg im_view)">
+
+	  <group if="$(arg im_proc)">
+      <node pkg="image_view" name="image_view" type="image_view" respawn="false" output="screen">
+        <param name="autosize" value="true" />
+        <remap from="image" to="/C920/image_rect"/>
+      </node>
+	  </group>
+
+  	<group unless="$(arg im_proc)">
+      <node pkg="image_view" name="image_view" type="image_view" respawn="false" output="screen">
+        <param name="autosize" value="true" />
+        <remap from="image" to="/C920/image_raw"/>
+      </node>
+    </group>
+
+  </group>
+
+
+</launch>

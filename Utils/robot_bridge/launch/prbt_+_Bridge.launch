@@ -1,0 +1,14 @@
+<launch>
+
+	<!--	prbt launchfile	-->
+  <include file="$(find robot_bridge)/launch/moveit_planning_execution.launch">
+    <arg name="sim" value="false"/>
+    <!--arg name="pipeline" value="ompl"/-->
+    <arg name="pipeline" value="pilz_command_planner"/>
+    <arg name="start_rviz" value="false"/>
+  </include>
+  
+	<!--	bridge launch file	-->
+  <include file="$(find robot_bridge)/launch/Bridge.launch"/>
+
+</launch>

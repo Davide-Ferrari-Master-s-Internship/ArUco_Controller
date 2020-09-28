@@ -1,0 +1,13 @@
+#Request
+
+string planner_id
+int32 attempts
+float64 time
+float64 v_factor
+float64 a_factor
+
+---
+
+#Response
+
+bool response

@@ -1,0 +1,9 @@
+#Request
+
+bool request
+
+---
+
+#Response
+
+trajectory_msgs/JointTrajectory prbt_trajectory

@@ -1,0 +1,17 @@
+<launch>
+
+  <!--	Arguments	 -->
+  
+  <arg name="planning_plugin" value="ompl_interface/OMPLPlanner" />
+  <arg name="planning_adapters" value="industrial_trajectory_filters/UniformSampleFilter default_planner_request_adapters/AddTimeParameterization default_planner_request_adapters/FixWorkspaceBounds default_planner_request_adapters/FixStartStateBounds default_planner_request_adapters/FixStartStateCollision default_planner_request_adapters/FixStartStatePathConstraints" />
+
+	<!--	Node	-->
+
+	<node pkg="prbt_planner" type="prbt_planner_Node" name="prbt_planner_Node" output="log">
+    <param name="planning_plugin" value="$(arg planning_plugin)"/>
+    <param name="request_adapters" value="$(arg planning_adapters)"/>
+    <param name="sample_duration" value="0.1"/>
+    <rosparam command="load" file="$(find prbt_moveit_config)/config/ompl_planning.yaml"/>
+	</node>
+
+</launch>

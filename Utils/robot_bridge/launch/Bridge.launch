@@ -1,0 +1,12 @@
+<launch>
+	
+	<!--	Robot Bridge Node	-->
+	<node pkg="robot_bridge" type="Robot_Bridge_Node" name="Robot_Bridge_Node" output="screen"/>
+
+	<!--	prbt Bridge Node	-->
+	<node pkg="robot_bridge" type="prbt_Bridge_Node" name="prbt_Bridge_Node" output="screen"/>
+
+	<!--	mpo Bridge Node	-->
+	<node pkg="robot_bridge" type="mpo_500_Bridge_Node" name="mpo_500_Bridge_Node" output="screen"/>
+
+</launch>

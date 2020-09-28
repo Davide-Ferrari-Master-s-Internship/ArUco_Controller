@@ -1,0 +1,24 @@
+<launch>
+
+  <arg name="im_proc" default="false"/>
+  <arg name="im_view" default="false"/>
+  <arg name="real_camera" default="true"/>
+
+	<!--   C922 Launchfile   -->
+  <group if="$(arg real_camera)">
+		<include file="$(find aruco_detection)/launch/C920_USB_CAM.launch"> 
+			<arg name="v_device" value="/dev/video4"/>
+			<arg name="im_width" value="1024"/>
+			<arg name="im_height" value="576"/>
+			<arg name="im_proc" value="$(arg im_proc)"/>
+			<arg name="im_view" default="$(arg im_view)"/>
+		</include>
+	</group>
+
+	<node pkg="aruco_detection" type="ArUco_Detection_Node" name="ArUco_Detection_Node" output="screen">
+    <rosparam if="$(arg real_camera)" file="$(find aruco_detection)/config/C920_calibration.yaml"/>
+    <rosparam unless="$(arg real_camera)" file="$(find aruco_detection)/config/virtual_camera_calibration.yaml"/>
+    <param name="im_proc" value="$(arg im_proc)"/>
+  </node>
+
+</launch>

@@ -1,0 +1,12 @@
+#Request
+
+bool request
+
+---
+
+#Response
+
+string world
+string base
+string[] links
+string end_effector

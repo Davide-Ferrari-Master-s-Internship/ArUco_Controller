@@ -1,0 +1,9 @@
+<launch>
+
+	<!--	prbt launchfile	-->
+  <include file="$(find gazebo_simulation)/launch/prbt/prbt_gazebo.launch"/>
+
+	<!--	bridge launch file	-->
+  <include file="$(find robot_bridge)/launch/Bridge.launch"/>
+
+</launch>

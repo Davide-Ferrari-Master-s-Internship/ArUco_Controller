@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- Materials -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mmo_500">
+
+  <!--GAZEBO REFERENCES MPO_500-->
+  <xacro:include filename="$(find gazebo_simulation)/robots/urdf/xacros/mpo_500_gazebo.xacro" />
+
+  <!--ur10 -->
+  <xacro:include filename="$(find gazebo_simulation)/robots/urdf/xacros/common.gazebo.xacro" />
+
+  <!-- BODY -->
+  <xacro:include filename="$(find gazebo_simulation)/robots/urdf/xacros/mpo_500_body.xacro" />
+ 
+  <!-- WHEELS -->
+  <xacro:include filename="$(find gazebo_simulation)/robots/urdf/xacros/omni_wheel.xacro" />
+  
+  <!--Sick Micro-scan  -->
+  <xacro:include filename="$(find gazebo_simulation)/robots/urdf/xacros/micro_scan.xacro" /> 
+
+	<!--+++++++++++++++++++cabinet++++++++++++++++++++++++--> 
+	<xacro:include filename="$(find gazebo_simulation)/robots/urdf/xacros/cabinet.xacro" />
+
+	<!-- PRBT -->
+	<xacro:include filename="$(find gazebo_simulation)/robots/urdf/prbt_macro.xacro" />
+
+	<!-- Panda -->
+  <xacro:include filename="$(find gazebo_simulation)/robots/urdf/panda_arm.xacro" />
+
+
+	<!-- Base Macro-->
+  <xacro:mpo_500_base name="base_link">
+  </xacro:mpo_500_base>
+
+  <!-- Wheel Macro -->
+  <xacro:omni_wheel_250 name="mpo_500_omni_wheel_front_left" parent="base_link">
+  	<origin xyz="0.25 0.28 0.13" rpy="0 0 0" />
+  </xacro:omni_wheel_250>
+
+  <xacro:omni_wheel_250 name="mpo_500_omni_wheel_front_right" parent="base_link">
+  	<origin xyz="0.25 -0.28 0.13" rpy="0 0 3.14" />
+  </xacro:omni_wheel_250>
+
+  <xacro:omni_wheel_250 name="mpo_500_omni_wheel_back_left" parent="base_link">
+  	<origin xyz="-0.25 0.28 0.13" rpy="0 0 0" />
+  </xacro:omni_wheel_250>
+
+  <xacro:omni_wheel_250 name="mpo_500_omni_wheel_back_right" parent="base_link">
+  	<origin xyz="-0.25 -0.28 0.13" rpy="0 0 3.14" />
+  </xacro:omni_wheel_250>
+
+   <!-- Robot arm  -->
+  <xacro:prbt parent="base_link" prefix="prbt_">
+    <origin xyz="0 0 0." rpy="0 0 0" />
+  </xacro:prbt>
+
+
+</robot>

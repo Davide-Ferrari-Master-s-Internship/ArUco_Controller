@@ -1,0 +1,9 @@
+Header mpo_500_velocity
+geometry_msgs/Twist base_velocity
+
+Header mpo_500_trajectory
+geometry_trajectory_msg base_trajectory
+
+Header prbt
+trajectory_msgs/JointTrajectory manipulator_trajectory
+

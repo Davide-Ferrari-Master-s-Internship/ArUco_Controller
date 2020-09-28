@@ -1,0 +1,24 @@
+image_width: 1920
+image_height: 1080
+camera_name: virtual_camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [1144.0874006434067, 0.0, 960.5, 0.0, 1144.0874006434067, 540.5, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.0, 0.0, 0.0, 0.0, 0.0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [1144.0874006434067, 0.0, 960.5, -80.08611804503848, 0.0, 1144.0874006434067, 540.5, 0.0, 0.0, 0.0, 1.0, 0.0]
+scale_factors:
+  scale_x: 1.0
+  scale_y: 1.0
+  scale_z: 1.0

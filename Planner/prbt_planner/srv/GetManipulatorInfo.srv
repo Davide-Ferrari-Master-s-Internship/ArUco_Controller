@@ -1,0 +1,12 @@
+#Request
+
+bool request
+
+---
+
+#Response
+
+string manipulator_name
+string[] manipulator_joint_names
+float32[] prbt_joint_limits
+float64[] home_position
